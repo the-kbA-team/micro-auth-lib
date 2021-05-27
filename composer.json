@@ -1,0 +1,32 @@
+{
+    "name": "kba-team/micro-auth-lib",
+    "description": "External micro-service authentication library used by the service and the clients.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gregor",
+            "email": "gregor-j@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "kbATeam\\MicroAuthLib\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\kbATeam\\MicroAuthLib\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "scripts": {
+        "tests": "vendor/bin/phpunit"
+    }
+}
