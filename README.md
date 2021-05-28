@@ -1,19 +1,18 @@
 # Micro Auth Lib
 
-[![License: MIT][license-mit]](LICENSE)
-[![Build Status][build-status]][travis-ci]
-[![Maintainability][maintainability-badge]][maintainability]
-[![Test Coverage][coverage-badge]][coverage]
+[![License: MIT]](LICENSE)
+[![Build Status]][travis-ci]
+[![Maintainability]][maintainability]
+[![Test Coverage]][coverage]
 
 External micro-service authentication library used by the service and the
 clients.
 
-![Sequence diagram of the use of this library.][seqdiag]
+![Sequence diagram for this library]
 
 ## Usage
 
-Add this repository to the [`repositories` array][1] of your `composer.json` and
-require `kba-team/micro-auth-lib`.
+Require `kba-team/micro-auth-lib` using [composer].
 
 ### Server
 
@@ -122,12 +121,12 @@ $kbaAuth = new Url('https://auth.service.test/');
 header('Location: ' . $request->getLocation($kbaAuth), true, 302);
 ```
 
-[seqdiag]: https://www.planttext.com/api/plantuml/svg/bPFVQy8m4CVV-rSSKgp2jCEnbqBzCIWJnfXitPimilQs1cjQagl--xlMrZcrcti9bylT9vTyxwQ6XAPYdLeYpuU4Xc0mXiRsm9On-A25YdlzfR8rVg16xIT4kV5Sjmbq2uFQJRDFgJWgIZ1Q-OamISys8YKOLXnUwtn66II8icmb4RQIaZB0-b73dSws3FLW7eOBkBaUWIWe6R9h8oDqgqsUv9EbaZudTxNVqBkHlol1icf8oUiSfaDlbWkE6VKx7jm78Lo6QsFypgzDU43zZZepIpNZK5Ga8q4oK__YBkQBakay1uzFOV3s-X8yEoU0AgWzUIDI6Gl2tkvTLz2gaatS7-kSMy1HsTPXHoaqRm-kRmHdxpd9Qm9RPMg_lTPJmPj2zgAGN-EwXL_XpalztRwLj4sFNeGvFmP__TZH8_aYitUEgx-30TmQPrATiFWQGHptFn_6c2BXoM1CKSKyery0
-[1]: https://getcomposer.org/doc/04-schema.md#repositories
-[license-mit]: https://img.shields.io/badge/license-MIT-blue.svg
-[build-status]: https://travis-ci.org/the-kbA-team/micro-auth-lib.svg?branch=main
+[Sequence diagram for this library]: https://www.planttext.com/api/plantuml/svg/bPFVQy8m4CVV-rSSKgp2jCEnbqBzCIWJnfXitPimilQs1cjQagl--xlMrZcrcti9bylT9vTyxwQ6XAPYdLeYpuU4Xc0mXiRsm9On-A25YdlzfR8rVg16xIT4kV5Sjmbq2uFQJRDFgJWgIZ1Q-OamISys8YKOLXnUwtn66II8icmb4RQIaZB0-b73dSws3FLW7eOBkBaUWIWe6R9h8oDqgqsUv9EbaZudTxNVqBkHlol1icf8oUiSfaDlbWkE6VKx7jm78Lo6QsFypgzDU43zZZepIpNZK5Ga8q4oK__YBkQBakay1uzFOV3s-X8yEoU0AgWzUIDI6Gl2tkvTLz2gaatS7-kSMy1HsTPXHoaqRm-kRmHdxpd9Qm9RPMg_lTPJmPj2zgAGN-EwXL_XpalztRwLj4sFNeGvFmP__TZH8_aYitUEgx-30TmQPrATiFWQGHptFn_6c2BXoM1CKSKyery0
+[composer]: https://getcomposer.org/
+[License: MIT]: https://img.shields.io/badge/license-MIT-blue.svg
+[Build Status]: https://travis-ci.org/the-kbA-team/micro-auth-lib.svg?branch=main
 [travis-ci]: https://travis-ci.org/the-kbA-team/micro-auth-lib
-[maintainability-badge]: https://api.codeclimate.com/v1/badges/4a476b8f42f9f6dfe89c/maintainability
+[Maintainability]: https://api.codeclimate.com/v1/badges/4a476b8f42f9f6dfe89c/maintainability
 [maintainability]: https://codeclimate.com/github/the-kbA-team/micro-auth-lib/maintainability
-[coverage-badge]: https://api.codeclimate.com/v1/badges/4a476b8f42f9f6dfe89c/test_coverage
+[Test Coverage]: https://api.codeclimate.com/v1/badges/4a476b8f42f9f6dfe89c/test_coverage
 [coverage]: https://codeclimate.com/github/the-kbA-team/micro-auth-lib/test_coverage
