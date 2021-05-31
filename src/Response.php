@@ -87,7 +87,7 @@ class Response
             ->sub(new DateInterval(sprintf('PT%uS', $timeoutSeconds)));
         $upperLimit = new DateTime('now');
 
-        if ($timestamp < $lowerLimit || $upperLimit <= $timestamp) {
+        if ($timestamp < $lowerLimit || $upperLimit < $timestamp) {
             throw new InvalidParameterException('Response has timed out.');
         }
         return new static($authName, $id, $timestamp);
