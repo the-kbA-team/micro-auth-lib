@@ -3,7 +3,6 @@
 namespace kbATeam\MicroAuthLib\Traits;
 
 use DateTime;
-use Exception;
 use kbATeam\MicroAuthLib\Exceptions\InvalidParameterException;
 
 /**
@@ -47,19 +46,12 @@ trait ParamTimestamp
         if (!array_key_exists(static::TIMESTAMP, $input)) {
             throw new InvalidParameterException('Parameter timestamp is missing.');
         }
-        $timestamp = trim(filter_var(
-            $input[static::TIMESTAMP],
-            FILTER_SANITIZE_STRING,
-            FILTER_FLAG_STRIP_HIGH|FILTER_FLAG_STRIP_LOW|FILTER_FLAG_STRIP_BACKTICK
-        ));
-        try {
-            return new DateTime($timestamp);
-        } catch (Exception $exception) {
+        $timestamp = DateTime::createFromFormat('U', $input[static::TIMESTAMP]);
+        if (!$timestamp instanceof DateTime) {
             throw new InvalidParameterException(
-                'Parameter timestamp is not a timestamp. ' . $exception->getMessage(),
-                0,
-                $exception
+                'Parameter timestamp is not a timestamp.'
             );
         }
+        return $timestamp;
     }
 }

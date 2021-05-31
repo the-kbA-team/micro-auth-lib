@@ -60,7 +60,7 @@ class Response
     public function getLocation(Url $referer): string
     {
         $referer->setParam(static::AUTH_NAME, $this->getAuthName());
-        $referer->setParam(static::TIMESTAMP, $this->getTimestamp()->format('c'));
+        $referer->setParam(static::TIMESTAMP, $this->getTimestamp()->format('U'));
         $referer->setParam(static::ID, $this->getId());
         $referer->setParam(static::CHECKSUM, $this->getChecksum());
         return (string)$referer;
@@ -86,6 +86,13 @@ class Response
         $lowerLimit = (new DateTime('now'))
             ->sub(new DateInterval(sprintf('PT%uS', $timeoutSeconds)));
         $upperLimit = new DateTime('now');
+
+        /**
+         * The timezone of $timestamp will be UTC, because of format 'U'. The timezone of the local variables
+         * $lowerLimit and $upperLimit will be the one set by the local instance of PHP. Apply the local timezone
+         * to the timestamp from the response.
+         */
+        $timestamp = $timestamp->setTimezone($lowerLimit->getTimezone());
 
         if ($timestamp < $lowerLimit || $upperLimit < $timestamp) {
             throw new InvalidParameterException('Response has timed out.');
