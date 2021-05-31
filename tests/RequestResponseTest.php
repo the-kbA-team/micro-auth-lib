@@ -117,6 +117,6 @@ class RequestResponseTest extends TestCase
          */
         static::assertSame('Mailly', $responseReceived->getAuthName());
         static::assertSame($requestId, $responseReceived->getId());
-        static::assertSame($responseTime->format('c'), $responseReceived->getTimestamp()->format('c'));
+        static::assertSame($responseTime->format('U'), $responseReceived->getTimestamp()->format('U'));
     }
 }

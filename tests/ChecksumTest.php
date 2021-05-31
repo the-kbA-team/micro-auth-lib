@@ -25,7 +25,7 @@ class ChecksumTest extends TestCase
     {
         $now = new DateTime('now');
         $actual = Checksum::response(56584, 'Alonese', $now);
-        $expected = md5('56584Alonese' . $now->format('c'));
+        $expected = md5('56584Alonese' . $now->format('U'));
         static::assertSame($expected, $actual);
     }
 
@@ -48,7 +48,7 @@ class ChecksumTest extends TestCase
         $now = new DateTime('now');
         Checksum::setSecret('iDVig25J');
         $actual = Checksum::response(57136, 'Winfort', $now);
-        $expected = md5('57136WinfortiDVig25J' . $now->format('c'));
+        $expected = md5('57136WinfortiDVig25J' . $now->format('U'));
         static::assertSame($expected, $actual);
     }
 }

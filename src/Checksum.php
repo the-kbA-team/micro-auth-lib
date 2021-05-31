@@ -58,7 +58,7 @@ class Checksum
         $string = str_replace('%ID%', $id, $string);
         $string = str_replace('%AUTH_NAME%', $authName, $string);
         $string = str_replace('%SECRET%', static::$secret, $string);
-        $string = str_replace('%TIMESTAMP%', $timestamp->format('c'), $string);
+        $string = str_replace('%TIMESTAMP%', $timestamp->format('U'), $string);
         return md5($string);
     }
 }
