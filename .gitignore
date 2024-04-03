@@ -3,3 +3,4 @@
 /.phpunit.result.cache
 /.uuid
 /clover.xml
+/composer.lock
