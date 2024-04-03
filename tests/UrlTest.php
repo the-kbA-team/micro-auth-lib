@@ -13,7 +13,7 @@ class UrlTest extends TestCase
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testToString()
+    public function testToString(): void
     {
         $url = new Url('https://www.google.com');
         static::assertSame('https://www.google.com/', (string)$url);
@@ -42,7 +42,7 @@ class UrlTest extends TestCase
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @dataProvider provideValidUrls
      */
-    public function testValidUrls(string $url)
+    public function testValidUrls(string $url): void
     {
         static::assertSame(
             $url,
@@ -55,7 +55,7 @@ class UrlTest extends TestCase
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testSetParam()
+    public function testSetParam(): void
     {
         $url = new Url('//me@www.duckduckgo.com:443/?s=what+is+my+ip#anchor');
         $url->setParam('x', 'hello world');
@@ -84,7 +84,7 @@ class UrlTest extends TestCase
      * @throws InvalidUrlException
      * @dataProvider provideInvalidUrls
      */
-    public function testInvalidUrls(string $string)
+    public function testInvalidUrls(string $string): void
     {
         $this->expectException(InvalidUrlException::class);
         $this->expectExceptionMessage('Invalid URL.');
@@ -94,7 +94,7 @@ class UrlTest extends TestCase
     /**
      * Test missing hostname exception.
      */
-    public function testMissingHostname()
+    public function testMissingHostname(): void
     {
         $this->expectException(InvalidUrlException::class);
         $this->expectExceptionMessage('Missing hostname.');
