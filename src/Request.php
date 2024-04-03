@@ -59,7 +59,7 @@ final class Request
 
     /**
      * Read the request parameters from the input array and return a Request instance.
-     * @param array $input Input array, like $_GET.
+     * @param array<string, string> $input Input array, like $_GET.
      * @return Request
      * @throws InvalidParameterException
      */

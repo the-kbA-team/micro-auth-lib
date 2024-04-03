@@ -32,7 +32,7 @@ trait ParamAuthName
 
     /**
      * Read the authenticated name parameter from the given input array.
-     * @param array $input
+     * @param array<string, string> $input
      * @return string
      * @throws InvalidParameterException
      */

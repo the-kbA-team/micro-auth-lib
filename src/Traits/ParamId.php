@@ -38,7 +38,7 @@ trait ParamId
 
     /**
      * Read the id parameter from the given input array.
-     * @param array $input
+     * @param array<string, string> $input
      * @return int
      * @throws InvalidParameterException
      */

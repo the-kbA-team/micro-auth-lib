@@ -36,7 +36,7 @@ trait ParamReferer
 
     /**
      * Read the referer parameter from the given input array.
-     * @param array $input
+     * @param array<string, string> $input
      * @return Url
      * @throws InvalidParameterException
      */

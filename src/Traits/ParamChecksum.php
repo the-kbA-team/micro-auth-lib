@@ -12,7 +12,7 @@ trait ParamChecksum
 {
     /**
      * Read the checksum parameter from the given input array.
-     * @param array $input
+     * @param array<string, string> $input
      * @return string
      * @throws InvalidParameterException
      */
