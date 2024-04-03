@@ -2,3 +2,4 @@
 /vendor/
 /.phpunit.result.cache
 /.uuid
+/clover.xml
