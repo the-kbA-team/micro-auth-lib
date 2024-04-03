@@ -38,11 +38,11 @@ trait ParamAuthName
      */
     private static function readAuthName(array $input): string
     {
-        if (!array_key_exists(static::AUTH_NAME, $input)) {
+        if (!array_key_exists(self::AUTH_NAME, $input)) {
             throw new InvalidParameterException('Authenticated name is missing.');
         }
         $authName = trim(filter_var(
-            $input[static::AUTH_NAME],
+            $input[self::AUTH_NAME],
             FILTER_SANITIZE_STRING,
             FILTER_FLAG_STRIP_HIGH|FILTER_FLAG_STRIP_LOW|FILTER_FLAG_STRIP_BACKTICK
         ));

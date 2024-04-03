@@ -8,7 +8,7 @@ use kbATeam\MicroAuthLib\Exceptions\InvalidUrlException;
  * Class Url
  * Handling GET parameters of service and referer URLs.
  */
-class Url
+final class Url
 {
     /**
      * @var array

@@ -9,7 +9,7 @@ use kbATeam\MicroAuthLib\Traits\ParamAuthName;
  * Class AuthResult
  * Kerberos authentication result (the name).
  */
-class AuthResult
+final class AuthResult
 {
     /**
      * Constant defining the variable name Apache2
@@ -36,7 +36,7 @@ class AuthResult
      */
     public static function read(array $input): AuthResult
     {
-        $name = static::readAuthName($input);
-        return new static($name);
+        $name = self::readAuthName($input);
+        return new self($name);
     }
 }
