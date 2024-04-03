@@ -61,7 +61,7 @@ final class Response
     {
         $referer->setParam(self::AUTH_NAME, $this->getAuthName());
         $referer->setParam(self::TIMESTAMP, $this->getTimestamp()->format('U'));
-        $referer->setParam(self::ID, $this->getId());
+        $referer->setParam(self::ID, (string)$this->getId());
         $referer->setParam(self::CHECKSUM, $this->getChecksum());
         return (string)$referer;
     }

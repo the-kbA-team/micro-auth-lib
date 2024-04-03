@@ -51,7 +51,7 @@ final class Request
      */
     public function getLocation(Url $service): string
     {
-        $service->setParam(self::ID, $this->getId());
+        $service->setParam(self::ID, (string)$this->getId());
         $service->setParam(self::REFERER, (string)$this->getReferer());
         $service->setParam(self::CHECKSUM, $this->getChecksum());
         return (string)$service;

@@ -45,7 +45,7 @@ trait ParamReferer
         if (!array_key_exists(self::REFERER, $input)) {
             throw new InvalidParameterException('Request referer is missing.');
         }
-        $referer = trim(filter_var(
+        $referer = trim((string)filter_var(
             $input[self::REFERER],
             FILTER_SANITIZE_URL
         ));

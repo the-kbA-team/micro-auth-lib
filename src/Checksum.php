@@ -39,7 +39,7 @@ final class Checksum
     public static function request(int $id, string $referer): string
     {
         $string = self::REQUEST;
-        $string = str_replace('%ID%', $id, $string);
+        $string = str_replace('%ID%', (string)$id, $string);
         $string = str_replace('%SECRET%', self::$secret, $string);
         $string = str_replace('%REFERER%', $referer, $string);
         return md5($string);
@@ -55,7 +55,7 @@ final class Checksum
     public static function response(int $id, string $authName, DateTime $timestamp): string
     {
         $string = self::RESPONSE;
-        $string = str_replace('%ID%', $id, $string);
+        $string = str_replace('%ID%', (string)$id, $string);
         $string = str_replace('%AUTH_NAME%', $authName, $string);
         $string = str_replace('%SECRET%', self::$secret, $string);
         $string = str_replace('%TIMESTAMP%', $timestamp->format('U'), $string);

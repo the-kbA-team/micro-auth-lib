@@ -41,7 +41,7 @@ trait ParamAuthName
         if (!array_key_exists(self::AUTH_NAME, $input)) {
             throw new InvalidParameterException('Authenticated name is missing.');
         }
-        $authName = trim(filter_var(
+        $authName = trim((string)filter_var(
             $input[self::AUTH_NAME],
             FILTER_SANITIZE_STRING,
             FILTER_FLAG_STRIP_HIGH|FILTER_FLAG_STRIP_LOW|FILTER_FLAG_STRIP_BACKTICK

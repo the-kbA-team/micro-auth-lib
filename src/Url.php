@@ -27,10 +27,11 @@ final class Url
      */
     public function __construct(string $url)
     {
-        $this->url = parse_url($url);
-        if ($this->url === false) {
+        $parsedUrl = parse_url($url);
+        if ($parsedUrl === false) {
             throw new InvalidUrlException('Invalid URL.');
         }
+        $this->url = $parsedUrl;
         if (!array_key_exists('host', $this->url) || $this->url['host'] === null) {
             throw new InvalidUrlException('Missing hostname.');
         }
