@@ -11,12 +11,12 @@ use kbATeam\MicroAuthLib\Exceptions\InvalidUrlException;
 final class Url
 {
     /**
-     * @var array
+     * @var array<string, string|int>
      */
     private $url;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $params = [];
 
@@ -46,7 +46,7 @@ final class Url
      */
     public function setParam(string $key, string $value): void
     {
-        $this->params[$key] = filter_var(
+        $this->params[$key] = (string)filter_var(
             $value,
             FILTER_SANITIZE_STRING,
             FILTER_FLAG_STRIP_HIGH|FILTER_FLAG_STRIP_LOW|FILTER_FLAG_STRIP_BACKTICK
@@ -114,7 +114,7 @@ final class Url
         if (!array_key_exists('path', $this->url) || $this->url['path'] === null) {
             return '/';
         }
-        return $this->url['path'];
+        return (string)$this->url['path'];
     }
 
     /**
