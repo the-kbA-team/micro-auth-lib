@@ -25,7 +25,7 @@ class TraitParamIdTest extends TestCase
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      */
-    public function testMissingIdParameter()
+    public function testMissingIdParameter(): void
     {
         /**
          * Build request on the client side with a random ID
@@ -42,7 +42,7 @@ class TraitParamIdTest extends TestCase
 
         static::assertIsArray($requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        static::assertIsString($requestParsed['query']);
+        static::assertIsString($requestParsed['query'] ?? null);
 
         parse_str($requestParsed['query'], $requestParams);
 
@@ -60,7 +60,7 @@ class TraitParamIdTest extends TestCase
 
     /**
      * Data provider for invalid ID parameters.
-     * @return array
+     * @return array<int, mixed>
      */
     public static function provideInvalidIdParameter(): array
     {
@@ -81,7 +81,7 @@ class TraitParamIdTest extends TestCase
      * @throws InvalidParameterException
      * @dataProvider provideInvalidIdParameter
      */
-    public function testInvalidIdParameter($replacement)
+    public function testInvalidIdParameter($replacement): void
     {
         /**
          * Build request on the client side with a random ID
@@ -98,7 +98,7 @@ class TraitParamIdTest extends TestCase
 
         static::assertIsArray($requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        static::assertIsString($requestParsed['query']);
+        static::assertIsString($requestParsed['query'] ?? null);
 
         parse_str($requestParsed['query'], $requestParams);
 
