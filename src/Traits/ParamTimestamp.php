@@ -37,7 +37,7 @@ trait ParamTimestamp
 
     /**
      * Read the timestamp parameter from the given input array.
-     * @param array<string, string> $input
+     * @param  array  $input
      * @return DateTime
      * @throws InvalidParameterException
      */

@@ -30,7 +30,7 @@ final class AuthResult
 
     /**
      * Read the authentication result from the given input array.
-     * @param array<string, string> $input
+     * @param array $input
      * @return AuthResult
      * @throws InvalidParameterException
      */

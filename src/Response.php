@@ -68,7 +68,7 @@ final class Response
 
     /**
      * Read the response parameters from the input array and return a Response instance.
-     * @param array<string, string> $input
+     * @param array $input
      * @param int $timeoutSeconds
      * @return Response
      * @throws InvalidParameterException
