@@ -6,10 +6,16 @@ use kbATeam\MicroAuthLib\AuthResult;
 use kbATeam\MicroAuthLib\Exceptions\InvalidParameterException;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class AuthResultTest
+ */
 class AuthResultTest extends TestCase
 {
 
-    public function testRead()
+    /**
+     * @return void
+     */
+    public function testRead(): void
     {
         $server['REMOTE_USER'] = 'Protiong';
         $result = AuthResult::read($server);
@@ -17,6 +23,9 @@ class AuthResultTest extends TestCase
         static::assertSame('Protiong', $result->getAuthName());
     }
 
+    /**
+     * @return array<int, array<int, array<string, string>|string>>
+     */
     public static function provideInvalidAuthNames(): array
     {
         return [
@@ -26,19 +35,22 @@ class AuthResultTest extends TestCase
     }
 
     /**
-     * @param array $input
+     * @param array<int, mixed> $input
      * @param string $message
      * @throws InvalidParameterException
      * @dataProvider provideInvalidAuthNames
      */
-    public function testInvalidAuthNames(array $input, string $message)
+    public function testInvalidAuthNames(array $input, string $message): void
     {
         $this->expectException(InvalidParameterException::class);
         $this->expectExceptionMessage($message);
         AuthResult::read($input);
     }
 
-    public function testSetterAndGetter()
+    /**
+     * @return void
+     */
+    public function testSetterAndGetter(): void
     {
         $result = new AuthResult('Andly2000');
         $result->setAuthName('Appose');
