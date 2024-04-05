@@ -21,7 +21,7 @@ class UrlTest extends TestCase
 
     /**
      * Data provider of valid URLs.
-     * @return \string[][]
+     * @return array<array<string>>
      */
     public static function provideValidUrls(): array
     {
@@ -67,7 +67,7 @@ class UrlTest extends TestCase
 
     /**
      * Data provider of invalid URLs.
-     * @return \string[][]
+     * @return array<array<string>>
      */
     public static function provideInvalidUrls(): array
     {
