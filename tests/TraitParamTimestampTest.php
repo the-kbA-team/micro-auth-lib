@@ -41,10 +41,9 @@ class TraitParamTimestampTest extends TestCase
         $responseParsed = parse_url($responseLocation);
         static::assertIsArray($responseParsed);
         static::assertArrayHasKey('query', $responseParsed);
-        $queryValue = $responseParsed['query'] ?? null;
-        static::assertIsString($queryValue);
+        static::assertIsString($responseParsed['query'] ?? null);
 
-        parse_str($queryValue, $responseParams);
+        parse_str($responseParsed['query'], $responseParams);
 
         static::assertIsArray($responseParams);
 
@@ -82,10 +81,9 @@ class TraitParamTimestampTest extends TestCase
         $responseParsed = parse_url($responseLocation);
         static::assertIsArray($responseParsed);
         static::assertArrayHasKey('query', $responseParsed);
-        $queryValue = $responseParsed['query'] ?? null;
-        static::assertIsString($queryValue);
+        static::assertIsString($responseParsed['query'] ?? null);
 
-        parse_str($queryValue, $responseParams);
+        parse_str($responseParsed['query'], $responseParams);
 
         static::assertIsArray($responseParams);
 

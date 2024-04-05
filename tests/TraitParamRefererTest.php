@@ -41,10 +41,9 @@ class TraitParamRefererTest extends TestCase
 
         static::assertIsArray($requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        $queryValue = $requestParsed['query'] ?? null;
-        static::assertIsString($queryValue);
+        static::assertIsString($requestParsed['query'] ?? null);
 
-        parse_str($queryValue, $requestParams);
+        parse_str($requestParsed['query'], $requestParams);
 
         static::assertIsArray($requestParams);
 
@@ -105,10 +104,9 @@ class TraitParamRefererTest extends TestCase
 
         static::assertIsArray($requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        $queryValue = $requestParsed['query'] ?? null;
-        static::assertIsString($queryValue);
+        static::assertIsString($requestParsed['query'] ?? null);
 
-        parse_str($queryValue, $requestParams);
+        parse_str($requestParsed['query'], $requestParams);
 
         static::assertIsArray($requestParams);
 
