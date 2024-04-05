@@ -11,7 +11,7 @@ use kbATeam\MicroAuthLib\Traits\ParamReferer;
  * Class Request
  * Kerberos SSO authentication request.
  */
-class Request
+final class Request
 {
     /**
      * Constants defining the GET parameter names of the request.
@@ -51,9 +51,9 @@ class Request
      */
     public function getLocation(Url $service): string
     {
-        $service->setParam(static::ID, $this->getId());
-        $service->setParam(static::REFERER, (string)$this->getReferer());
-        $service->setParam(static::CHECKSUM, $this->getChecksum());
+        $service->setParam(self::ID, (string)$this->getId());
+        $service->setParam(self::REFERER, (string)$this->getReferer());
+        $service->setParam(self::CHECKSUM, $this->getChecksum());
         return (string)$service;
     }
 
@@ -65,11 +65,11 @@ class Request
      */
     public static function read(array $input): Request
     {
-        $id = static::readId($input);
-        $referer = static::readReferer($input);
-        if (Checksum::request($id, (string)$referer) !== static::readChecksum($input)) {
+        $id = self::readId($input);
+        $referer = self::readReferer($input);
+        if (Checksum::request($id, (string)$referer) !== self::readChecksum($input)) {
             throw new InvalidParameterException('Parameter check failed.');
         }
-        return new static($referer, $id);
+        return new self($referer, $id);
     }
 }

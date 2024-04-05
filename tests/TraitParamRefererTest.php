@@ -24,7 +24,7 @@ class TraitParamRefererTest extends TestCase
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      */
-    public function testMissingRefererParameter()
+    public function testMissingRefererParameter(): void
     {
         /**
          * Build request on the client side with a random ID
@@ -41,7 +41,7 @@ class TraitParamRefererTest extends TestCase
 
         static::assertIsArray($requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        static::assertIsString($requestParsed['query']);
+        static::assertIsString($requestParsed['query'] ?? null);
 
         parse_str($requestParsed['query'], $requestParams);
 
@@ -59,7 +59,7 @@ class TraitParamRefererTest extends TestCase
 
     /**
      * Data provider of invalid referer parameters.
-     * @return array
+     * @return array<int, mixed>
      */
     public static function provideInvalidRefererParameter(): array
     {
@@ -79,7 +79,7 @@ class TraitParamRefererTest extends TestCase
     }
 
     /**
-     * Replace referer parameter with anything but and URL.
+     * Replace referer parameter with anything but a URL.
      * @param mixed $replacement
      * @throws Exception
      * @throws ExpectationFailedException
@@ -87,7 +87,7 @@ class TraitParamRefererTest extends TestCase
      * @throws InvalidParameterException
      * @dataProvider provideInvalidRefererParameter
      */
-    public function testInvalidRefererParameter($replacement)
+    public function testInvalidRefererParameter($replacement): void
     {
         /**
          * Build request on the client side with a random ID
@@ -104,7 +104,7 @@ class TraitParamRefererTest extends TestCase
 
         static::assertIsArray($requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        static::assertIsString($requestParsed['query']);
+        static::assertIsString($requestParsed['query'] ?? null);
 
         parse_str($requestParsed['query'], $requestParams);
 

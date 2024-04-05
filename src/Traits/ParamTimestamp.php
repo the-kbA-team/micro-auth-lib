@@ -37,16 +37,16 @@ trait ParamTimestamp
 
     /**
      * Read the timestamp parameter from the given input array.
-     * @param array $input
+     * @param  array  $input
      * @return DateTime
      * @throws InvalidParameterException
      */
     private static function readTimestamp(array $input): DateTime
     {
-        if (!array_key_exists(static::TIMESTAMP, $input)) {
+        if (!array_key_exists(self::TIMESTAMP, $input)) {
             throw new InvalidParameterException('Parameter timestamp is missing.');
         }
-        $timestamp = DateTime::createFromFormat('U', $input[static::TIMESTAMP]);
+        $timestamp = DateTime::createFromFormat('U', $input[self::TIMESTAMP]);
         if (!$timestamp instanceof DateTime) {
             throw new InvalidParameterException(
                 'Parameter timestamp is not a timestamp.'

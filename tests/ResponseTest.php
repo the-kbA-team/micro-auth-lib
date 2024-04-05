@@ -26,7 +26,7 @@ class ResponseTest extends TestCase
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      */
-    public function testResponseChecksumFail()
+    public function testResponseChecksumFail(): void
     {
         /**
          * Build response on the server side with a random ID.
@@ -42,7 +42,7 @@ class ResponseTest extends TestCase
         $responseParsed = parse_url($responseLocation);
         static::assertIsArray($responseParsed);
         static::assertArrayHasKey('query', $responseParsed);
-        static::assertIsString($responseParsed['query']);
+        static::assertIsString($responseParsed['query'] ?? null);
 
         parse_str($responseParsed['query'], $responseParams);
 
@@ -60,7 +60,7 @@ class ResponseTest extends TestCase
 
     /**
      * Data provider for a response timeout.
-     * @return array[]
+     * @return array<int, array<int, DateTime>>
      */
     public static function provideResponseTimeout(): array
     {
@@ -80,7 +80,7 @@ class ResponseTest extends TestCase
      * @throws InvalidArgumentException
      * @dataProvider provideResponseTimeout
      */
-    public function testResponseTimeout(DateTime $timestamp)
+    public function testResponseTimeout(DateTime $timestamp): void
     {
         /**
          * Build response on the server side with a random ID.
@@ -96,7 +96,7 @@ class ResponseTest extends TestCase
         $responseParsed = parse_url($responseLocation);
         static::assertIsArray($responseParsed);
         static::assertArrayHasKey('query', $responseParsed);
-        static::assertIsString($responseParsed['query']);
+        static::assertIsString($responseParsed['query'] ?? null);
 
         parse_str($responseParsed['query'], $responseParams);
 

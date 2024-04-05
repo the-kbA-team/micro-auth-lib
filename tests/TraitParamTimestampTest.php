@@ -23,8 +23,9 @@ class TraitParamTimestampTest extends TestCase
      * @throws Exception
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
+     * @throws \Exception
      */
-    public function testMissingTimestampParameter()
+    public function testMissingTimestampParameter(): void
     {
         /**
          * Build response on the server side with a random ID.
@@ -40,7 +41,7 @@ class TraitParamTimestampTest extends TestCase
         $responseParsed = parse_url($responseLocation);
         static::assertIsArray($responseParsed);
         static::assertArrayHasKey('query', $responseParsed);
-        static::assertIsString($responseParsed['query']);
+        static::assertIsString($responseParsed['query'] ?? null);
 
         parse_str($responseParsed['query'], $responseParams);
 
@@ -62,8 +63,9 @@ class TraitParamTimestampTest extends TestCase
      * @throws Exception
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
+     * @throws \Exception
      */
-    public function testInvalidTimestampParameter()
+    public function testInvalidTimestampParameter(): void
     {
         /**
          * Build response on the server side with a random ID.
@@ -79,7 +81,7 @@ class TraitParamTimestampTest extends TestCase
         $responseParsed = parse_url($responseLocation);
         static::assertIsArray($responseParsed);
         static::assertArrayHasKey('query', $responseParsed);
-        static::assertIsString($responseParsed['query']);
+        static::assertIsString($responseParsed['query'] ?? null);
 
         parse_str($responseParsed['query'], $responseParams);
 

@@ -8,15 +8,15 @@ use kbATeam\MicroAuthLib\Exceptions\InvalidUrlException;
  * Class Url
  * Handling GET parameters of service and referer URLs.
  */
-class Url
+final class Url
 {
     /**
-     * @var array
+     * @var array<string, string|int>
      */
     private $url;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $params = [];
 
@@ -27,10 +27,11 @@ class Url
      */
     public function __construct(string $url)
     {
-        $this->url = parse_url($url);
-        if ($this->url === false) {
+        $parsedUrl = parse_url($url);
+        if ($parsedUrl === false) {
             throw new InvalidUrlException('Invalid URL.');
         }
+        $this->url = $parsedUrl;
         if (!array_key_exists('host', $this->url) || $this->url['host'] === null) {
             throw new InvalidUrlException('Missing hostname.');
         }
@@ -45,7 +46,7 @@ class Url
      */
     public function setParam(string $key, string $value): void
     {
-        $this->params[$key] = filter_var(
+        $this->params[$key] = (string)filter_var(
             $value,
             FILTER_SANITIZE_STRING,
             FILTER_FLAG_STRIP_HIGH|FILTER_FLAG_STRIP_LOW|FILTER_FLAG_STRIP_BACKTICK
@@ -113,7 +114,7 @@ class Url
         if (!array_key_exists('path', $this->url) || $this->url['path'] === null) {
             return '/';
         }
-        return $this->url['path'];
+        return (string)$this->url['path'];
     }
 
     /**

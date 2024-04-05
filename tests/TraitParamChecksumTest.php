@@ -24,7 +24,7 @@ class TraitParamChecksumTest extends TestCase
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      */
-    public function testMissingChecksumParameter()
+    public function testMissingChecksumParameter(): void
     {
         /**
          * Build request on the client side with a random ID
@@ -41,7 +41,7 @@ class TraitParamChecksumTest extends TestCase
 
         static::assertIsArray($requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        static::assertIsString($requestParsed['query']);
+        static::assertIsString($requestParsed['query'] ?? null);
 
         parse_str($requestParsed['query'], $requestParams);
 
@@ -64,7 +64,7 @@ class TraitParamChecksumTest extends TestCase
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      */
-    public function testEmptyChecksumParameter()
+    public function testEmptyChecksumParameter(): void
     {
         /**
          * Build request on the client side with a random ID
@@ -81,7 +81,7 @@ class TraitParamChecksumTest extends TestCase
 
         static::assertIsArray($requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        static::assertIsString($requestParsed['query']);
+        static::assertIsString($requestParsed['query'] ?? null);
 
         parse_str($requestParsed['query'], $requestParams);
 

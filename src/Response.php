@@ -15,7 +15,7 @@ use kbATeam\MicroAuthLib\Traits\ParamTimestamp;
  * Class Response
  * Kerberos SSO authentication response.
  */
-class Response
+final class Response
 {
     /**
      * Constants defining the GET parameter names of the response.
@@ -59,10 +59,10 @@ class Response
      */
     public function getLocation(Url $referer): string
     {
-        $referer->setParam(static::AUTH_NAME, $this->getAuthName());
-        $referer->setParam(static::TIMESTAMP, $this->getTimestamp()->format('U'));
-        $referer->setParam(static::ID, $this->getId());
-        $referer->setParam(static::CHECKSUM, $this->getChecksum());
+        $referer->setParam(self::AUTH_NAME, $this->getAuthName());
+        $referer->setParam(self::TIMESTAMP, $this->getTimestamp()->format('U'));
+        $referer->setParam(self::ID, (string)$this->getId());
+        $referer->setParam(self::CHECKSUM, $this->getChecksum());
         return (string)$referer;
     }
 
@@ -76,10 +76,10 @@ class Response
      */
     public static function read(array $input, int $timeoutSeconds = 5): Response
     {
-        $authName = static::readAuthName($input);
-        $id = static::readId($input);
-        $timestamp = static::readTimestamp($input);
-        if (Checksum::response($id, $authName, $timestamp) !== static::readChecksum($input)) {
+        $authName = self::readAuthName($input);
+        $id = self::readId($input);
+        $timestamp = self::readTimestamp($input);
+        if (Checksum::response($id, $authName, $timestamp) !== self::readChecksum($input)) {
             throw new InvalidParameterException('Parameter check failed.');
         }
 
@@ -97,6 +97,6 @@ class Response
         if ($timestamp < $lowerLimit || $upperLimit < $timestamp) {
             throw new InvalidParameterException('Response has timed out.');
         }
-        return new static($authName, $id, $timestamp);
+        return new self($authName, $id, $timestamp);
     }
 }

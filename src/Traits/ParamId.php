@@ -44,11 +44,11 @@ trait ParamId
      */
     private static function readId(array $input): int
     {
-        if (!array_key_exists(static::ID, $input)) {
+        if (!array_key_exists(self::ID, $input)) {
             throw new InvalidParameterException('ID is missing.');
         }
         $id = filter_var(
-            $input[static::ID],
+            $input[self::ID],
             FILTER_SANITIZE_NUMBER_INT
         );
         if (!filter_var($id, FILTER_VALIDATE_INT)) {

@@ -42,11 +42,11 @@ trait ParamReferer
      */
     private static function readReferer(array $input): Url
     {
-        if (!array_key_exists(static::REFERER, $input)) {
+        if (!array_key_exists(self::REFERER, $input)) {
             throw new InvalidParameterException('Request referer is missing.');
         }
-        $referer = trim(filter_var(
-            $input[static::REFERER],
+        $referer = trim((string)filter_var(
+            $input[self::REFERER],
             FILTER_SANITIZE_URL
         ));
         try {

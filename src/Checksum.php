@@ -8,7 +8,7 @@ use DateTime;
  * Class Checksum
  * Static methods to create checksums for requests to and responses.
  */
-class Checksum
+final class Checksum
 {
     /**
      * Constants defining the checksum order.
@@ -38,9 +38,9 @@ class Checksum
      */
     public static function request(int $id, string $referer): string
     {
-        $string = static::REQUEST;
-        $string = str_replace('%ID%', $id, $string);
-        $string = str_replace('%SECRET%', static::$secret, $string);
+        $string = self::REQUEST;
+        $string = str_replace('%ID%', (string)$id, $string);
+        $string = str_replace('%SECRET%', self::$secret, $string);
         $string = str_replace('%REFERER%', $referer, $string);
         return md5($string);
     }
@@ -54,10 +54,10 @@ class Checksum
      */
     public static function response(int $id, string $authName, DateTime $timestamp): string
     {
-        $string = static::RESPONSE;
-        $string = str_replace('%ID%', $id, $string);
+        $string = self::RESPONSE;
+        $string = str_replace('%ID%', (string)$id, $string);
         $string = str_replace('%AUTH_NAME%', $authName, $string);
-        $string = str_replace('%SECRET%', static::$secret, $string);
+        $string = str_replace('%SECRET%', self::$secret, $string);
         $string = str_replace('%TIMESTAMP%', $timestamp->format('U'), $string);
         return md5($string);
     }

@@ -1,0 +1,11 @@
+parameters:
+  level: 9
+  treatPhpDocTypesAsCertain: false
+  paths:
+    - src/
+    - tests/
+  scanDirectories:
+    - vendor/
+  ignoreErrors:
+    # The read methods are expected to get any kind of array, because $input is outside the scope of this lib.
+    - '/Method .*::read.*\(\) has parameter \$input with no value type specified in iterable type array./'
