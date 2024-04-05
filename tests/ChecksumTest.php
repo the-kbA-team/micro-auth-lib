@@ -11,7 +11,7 @@ class ChecksumTest extends TestCase
     /**
      * Test a simple request checksum without a shared secret.
      */
-    public function testRequestWithoutSecret()
+    public function testRequestWithoutSecret(): void
     {
         $actual = Checksum::request(39819, 'https://www.google.com');
         $expected = md5('39819https://www.google.com');
@@ -21,7 +21,7 @@ class ChecksumTest extends TestCase
     /**
      * Test a simple response checksum without a shared secret.
      */
-    public function testResponseWithoutSecret()
+    public function testResponseWithoutSecret(): void
     {
         $now = new DateTime('now');
         $actual = Checksum::response(56584, 'Alonese', $now);
@@ -32,7 +32,7 @@ class ChecksumTest extends TestCase
     /**
      * Test a simple request checksum without a shared secret.
      */
-    public function testRequestWithSecret()
+    public function testRequestWithSecret(): void
     {
         Checksum::setSecret('lUfQ1lP7');
         $actual = Checksum::request(87660, 'https://www.github.com');
@@ -43,7 +43,7 @@ class ChecksumTest extends TestCase
     /**
      * Test a simple response checksum without a shared secret.
      */
-    public function testResponseWithSecret()
+    public function testResponseWithSecret(): void
     {
         $now = new DateTime('now');
         Checksum::setSecret('iDVig25J');
