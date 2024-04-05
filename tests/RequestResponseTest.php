@@ -28,7 +28,7 @@ class RequestResponseTest extends TestCase
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      */
-    public function testRequestResponse()
+    public function testRequestResponse(): void
     {
         $requestId = rand(1000, 9999);
 
@@ -49,10 +49,10 @@ class RequestResponseTest extends TestCase
         static::assertArrayHasKey('host', $requestParsed);
         static::assertArrayHasKey('path', $requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        static::assertSame('https', $requestParsed['scheme']);
-        static::assertSame('auth.service.test', $requestParsed['host']);
-        static::assertSame('/auth.php', $requestParsed['path']);
-        static::assertIsString($requestParsed['query']);
+        static::assertSame('https', $requestParsed['scheme'] ?? null);
+        static::assertSame('auth.service.test', $requestParsed['host'] ?? null);
+        static::assertSame('/auth.php', $requestParsed['path'] ?? null);
+        static::assertIsString($requestParsed['query'] ?? null);
 
         /**
          * Parse GET string into an array
@@ -96,10 +96,10 @@ class RequestResponseTest extends TestCase
         static::assertArrayHasKey('host', $responseParsed);
         static::assertArrayHasKey('path', $responseParsed);
         static::assertArrayHasKey('query', $responseParsed);
-        static::assertSame('https', $responseParsed['scheme']);
-        static::assertSame('app.test', $responseParsed['host']);
-        static::assertSame('/user/login', $responseParsed['path']);
-        static::assertIsString($responseParsed['query']);
+        static::assertSame('https', $responseParsed['scheme'] ?? null);
+        static::assertSame('app.test', $responseParsed['host'] ?? null);
+        static::assertSame('/user/login', $responseParsed['path'] ?? null);
+        static::assertIsString($responseParsed['query'] ?? null);
 
         /**
          * Parse GET string into an array
