@@ -24,7 +24,7 @@ class RequestTest extends TestCase
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      */
-    public function testRequestChecksumFail()
+    public function testRequestChecksumFail(): void
     {
         /**
          * Build request on the client side with a random ID
@@ -41,7 +41,7 @@ class RequestTest extends TestCase
 
         static::assertIsArray($requestParsed);
         static::assertArrayHasKey('query', $requestParsed);
-        static::assertIsString($requestParsed['query']);
+        static::assertIsString($requestParsed['query'] ?? null);
 
         parse_str($requestParsed['query'], $requestParams);
 
