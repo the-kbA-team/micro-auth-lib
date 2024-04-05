@@ -18,6 +18,13 @@ jobs:
       - name: "Validate composer.json"
         run: "composer validate --strict"
 
+  codesniffer:
+    name: "PSR12 validation (PHP_CodeSniffer)"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v3"
+      - uses: "php-actions/phpcs@v1"
+
   php:
     name: "PHP tests"
     runs-on: "ubuntu-latest"

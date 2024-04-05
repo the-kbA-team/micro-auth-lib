@@ -44,7 +44,7 @@ trait ParamAuthName
         $authName = trim((string)filter_var(
             $input[self::AUTH_NAME],
             FILTER_SANITIZE_STRING,
-            FILTER_FLAG_STRIP_HIGH|FILTER_FLAG_STRIP_LOW|FILTER_FLAG_STRIP_BACKTICK
+            FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_BACKTICK
         ));
         if (empty($authName)) {
             throw new InvalidParameterException('Authenticated name is empty.');

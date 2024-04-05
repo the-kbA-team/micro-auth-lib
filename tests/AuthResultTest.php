@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
  */
 class AuthResultTest extends TestCase
 {
-
     /**
      * @return void
      */
