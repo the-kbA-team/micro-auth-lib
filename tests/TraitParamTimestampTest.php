@@ -33,8 +33,6 @@ class TraitParamTimestampTest extends TestCase
         $responseSend = new Response('Frimilt');
         $responseLocation = $responseSend->getLocation(new Url('https://app.test/user/login'));
 
-        static::assertIsString($responseLocation);
-
         /**
          * Parse GET parameters from location
          */
@@ -44,8 +42,6 @@ class TraitParamTimestampTest extends TestCase
         static::assertIsString($responseParsed['query'] ?? null);
 
         parse_str($responseParsed['query'], $responseParams);
-
-        static::assertIsArray($responseParams);
 
         /**
          * Manipulate params
@@ -73,8 +69,6 @@ class TraitParamTimestampTest extends TestCase
         $responseSend = new Response('Frimilt');
         $responseLocation = $responseSend->getLocation(new Url('https://app.test/user/login'));
 
-        static::assertIsString($responseLocation);
-
         /**
          * Parse GET parameters from location
          */
@@ -84,8 +78,6 @@ class TraitParamTimestampTest extends TestCase
         static::assertIsString($responseParsed['query'] ?? null);
 
         parse_str($responseParsed['query'], $responseParams);
-
-        static::assertIsArray($responseParams);
 
         /**
          * Manipulate params

@@ -34,8 +34,6 @@ class ResponseTest extends TestCase
         $responseSend = new Response('Overed');
         $responseLocation = $responseSend->getLocation(new Url('https://app.test/user/login'));
 
-        static::assertIsString($responseLocation);
-
         /**
          * Parse GET parameters from location
          */
@@ -45,8 +43,6 @@ class ResponseTest extends TestCase
         static::assertIsString($responseParsed['query'] ?? null);
 
         parse_str($responseParsed['query'], $responseParams);
-
-        static::assertIsArray($responseParams);
 
         /**
          * Manipulate params
@@ -88,8 +84,6 @@ class ResponseTest extends TestCase
         $responseSend = new Response('Overed', null, $timestamp);
         $responseLocation = $responseSend->getLocation(new Url('https://app.test/user/login'));
 
-        static::assertIsString($responseLocation);
-
         /**
          * Parse GET parameters from location
          */
@@ -99,8 +93,6 @@ class ResponseTest extends TestCase
         static::assertIsString($responseParsed['query'] ?? null);
 
         parse_str($responseParsed['query'], $responseParams);
-
-        static::assertIsArray($responseParams);
 
         $this->expectException(InvalidParameterException::class);
         $this->expectExceptionMessage('Response has timed out.');

@@ -32,8 +32,6 @@ class TraitParamChecksumTest extends TestCase
         $requestSend = new Request(new Url('https://app.test/user/login'));
         $requestLocation = $requestSend->getLocation(new Url('https://auth.service.test/auth.php'));
 
-        static::assertIsString($requestLocation);
-
         /**
          * Parse GET parameters from location
          */
@@ -44,8 +42,6 @@ class TraitParamChecksumTest extends TestCase
         static::assertIsString($requestParsed['query'] ?? null);
 
         parse_str($requestParsed['query'], $requestParams);
-
-        static::assertIsArray($requestParams);
 
         /**
          * Manipulate params
@@ -72,8 +68,6 @@ class TraitParamChecksumTest extends TestCase
         $requestSend = new Request(new Url('https://app.test/user/login'));
         $requestLocation = $requestSend->getLocation(new Url('https://auth.service.test/auth.php'));
 
-        static::assertIsString($requestLocation);
-
         /**
          * Parse GET parameters from location
          */
@@ -84,8 +78,6 @@ class TraitParamChecksumTest extends TestCase
         static::assertIsString($requestParsed['query'] ?? null);
 
         parse_str($requestParsed['query'], $requestParams);
-
-        static::assertIsArray($requestParams);
 
         /**
          * Manipulate params

@@ -38,8 +38,6 @@ class RequestResponseTest extends TestCase
         $requestSend = new Request(new Url(self::APP_URL), $requestId);
         $requestLocation = $requestSend->getLocation(new Url(self::AUTH_URL));
 
-        static::assertIsString($requestLocation);
-
         /**
          * Parse request location and assert its parts.
          */
@@ -58,7 +56,6 @@ class RequestResponseTest extends TestCase
          * Parse GET string into an array
          */
         parse_str($requestParsed['query'], $requestParams);
-        static::assertIsArray($requestParams);
 
         /**
          * Accept request on the server side.
@@ -85,8 +82,6 @@ class RequestResponseTest extends TestCase
         $responseSend = new Response($authResult->getAuthName(), $requestReceived->getId(), $responseTime);
         $responseLocation = $responseSend->getLocation($requestReceived->getReferer());
 
-        static::assertIsString($responseLocation);
-
         /**
          * Parse response location and its parts.
          */
@@ -105,7 +100,6 @@ class RequestResponseTest extends TestCase
          * Parse GET string into an array
          */
         parse_str($responseParsed['query'], $responseParams);
-        static::assertIsArray($responseParams);
 
         /**
          * Accept the response on the client side
