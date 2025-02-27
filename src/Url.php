@@ -16,7 +16,7 @@ final class Url
     private $url;
 
     /**
-     * @var array<string, string>
+     * @var array<int|string, array<mixed>|string>
      */
     private $params = [];
 
